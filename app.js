@@ -20,10 +20,15 @@ app.use(cookieParser());
 mongoose
   .connect(
     "mongodb+srv://tolujohnofficial:sdc3CQEtFuwsYTtE@worklob.p3q3s.mongodb.net/?retryWrites=true&w=majority&appName=worklob",
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 50000, // Increase to 50 seconds
+      socketTimeoutMS: 45000, // Increase to 45 seconds
+    }
   )
   .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.log(err));
+  .catch((err) => console.error("Mongoose connection error: ", err));
 
 app.get("/allUsers", async (req, res) => {
   try {
