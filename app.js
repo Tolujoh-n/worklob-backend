@@ -19,7 +19,8 @@ app.use(cookieParser());
 
 mongoose
   .connect(
-    "mongodb+srv://tolujohnofficial:sdc3CQEtFuwsYTtE@worklob.p3q3s.mongodb.net/?retryWrites=true&w=majority&appName=worklob"
+    "mongodb+srv://tolujohnofficial:sdc3CQEtFuwsYTtE@worklob.p3q3s.mongodb.net/?retryWrites=true&w=majority&appName=worklob",
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
