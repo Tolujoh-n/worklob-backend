@@ -20,7 +20,7 @@ const applicationSchema = new mongoose.Schema(
     },
     paymentMethod: {
       type: String,
-      enum: ["USDT", "TIA"],
+      enum: ["USDT", "ETH"],
       required: true,
     },
     cvFile: {

@@ -1,3 +1,5 @@
+global.crypto = require("crypto").webcrypto;
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -6,6 +8,17 @@ const rootRouter = require("./src/router/index");
 const User = require("./src/models/User");
 const cookieParser = require("cookie-parser");
 const FullTimeJob = require("./src/models/FullTimeJob");
+const cron = require("node-cron");
+const { updateEthPrice } = require("./src/router/ethPrice");
+
+// Update ETH price every 5 minutes
+cron.schedule("*/5 * * * *", async () => {
+  console.log("Updating ETH price from CoinGecko...");
+  await updateEthPrice();
+});
+
+// Fetch once on startup
+updateEthPrice();
 
 const app = express();
 app.use(bodyParser.json());
