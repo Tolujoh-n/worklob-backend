@@ -24,7 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: ["https://worklobapp.netlify.app", "https://app.workloob.com/", "http://localhost:3000"],
+    origin: ["https://worklobapp.netlify.app", "https://app.workloob.com", "http://localhost:3000"],
     credentials: true,
   })
 );
